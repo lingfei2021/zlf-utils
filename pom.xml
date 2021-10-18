@@ -13,6 +13,7 @@
         <module>springboot</module>
         <module>java-main</module>
         <module>mybatis</module>
+        <module>es</module>
     </modules>
 
     <dependencies/>
