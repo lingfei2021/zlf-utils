@@ -25,6 +25,14 @@ public class CodeGenerator {
         gc.setAuthor("L");
         gc.setOpen(false);
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
+        gc.setBaseResultMap(true);
+        gc.setBaseColumnList(true);
+//        gc.setEntityName("%sEntity");			//实体命名方式  默认值：null 例如：%sEntity 生成 UserEntity
+        gc.setMapperName("%sMapper");			//mapper 命名方式 默认值：null 例如：%sDao 生成 UserDao
+        gc.setXmlName("%sMapper");				//Mapper xml 命名方式   默认值：null 例如：%sDao 生成 UserDao.xml
+        gc.setServiceName("%sService");			//service 命名方式   默认值：null 例如：%sBusiness 生成 UserBusiness
+        gc.setServiceImplName("%sServiceImpl");	//service impl 命名方式  默认值：null 例如：%sBusinessImpl 生成 UserBusinessImpl
+        gc.setControllerName("%sController");	//controller 命名方式    默认值：null 例如：%sAction 生成 UserAction
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
