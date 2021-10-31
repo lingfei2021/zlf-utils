@@ -1,4 +1,4 @@
-package com.zlf.utils.sparkjava.blog;
+package com.zlf.utils.sparkjava.blog.bean;
 
 public class FileEntity {
     public String name;

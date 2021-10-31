@@ -1,5 +1,6 @@
-package com.zlf.utils.sparkjava.blog;
+package com.zlf.utils.sparkjava.blog.handler;
 
+import com.zlf.utils.sparkjava.blog.bean.FileEntity;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;

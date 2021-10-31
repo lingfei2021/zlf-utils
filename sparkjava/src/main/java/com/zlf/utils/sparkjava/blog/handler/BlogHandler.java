@@ -1,6 +1,8 @@
-package com.zlf.utils.sparkjava.blog;
+package com.zlf.utils.sparkjava.blog.handler;
 
 import com.google.gson.Gson;
+import com.zlf.utils.sparkjava.blog.bean.Blog;
+import com.zlf.utils.sparkjava.blog.bean.Resp;
 import org.apache.commons.lang3.StringUtils;
 import spark.Request;
 import spark.Response;
@@ -20,19 +22,19 @@ public enum BlogHandler implements Route {
             Integer size = 2;
 
             long id = getId(request);
-            if(id > 0){
+            if(id >= 0){
                 result = blogsMap.get(id);
             }else {
-                String pageParam = request.params("page");
+                String pageParam = request.queryParams("page");
                 if(!StringUtils.isEmpty(pageParam)){
                     page = Integer.valueOf(pageParam);
                     int total = (page-1) * size;
                     int total1 = page * size;
-                    List<Object> list = blogsMap.values().stream().map(b -> {
-                        if(total < b.getId() && b.getId() <= total){
-                            return b;
+                    List<Object> list = blogsMap.values().stream().filter( b -> {
+                        if(total < b.getId() && b.getId() <= total1){
+                            return true;
                         }
-                        return null;
+                        return false;
                     }).collect(Collectors.toList());
                     result = list;
                 }
@@ -73,11 +75,11 @@ public enum BlogHandler implements Route {
     PUT {
         @Override
         public Object handle(Request request, Response response) throws Exception {
-            String idParam = request.params("id");
-            if (!StringUtils.isEmpty(idParam)) {
-                Blog blog = blogsMap.get(Long.valueOf(idParam));
+            long id = getId(request);
+            if (id >=0 ) {
+                Blog blog = blogsMap.get(id);
                 if (blog == null) {
-                    return Resp.create(400, "No Such Element:" + idParam);
+                    return Resp.create(400, "No Such Element:" + id);
                 } else {
                     Gson gson = new Gson();
                     Blog requestBody = gson.fromJson(request.body(), Blog.class);
@@ -106,7 +108,7 @@ public enum BlogHandler implements Route {
         public Object handle(Request request, Response response) throws Exception {
             long id = getId(request);
             if (id >= 0) {
-                getDao().deleteById(id);
+                blogsMap.remove(id);
                 return Resp.create(200, "OK");
             }
             return Resp.create(400, "Miss `id` attribute");
@@ -131,13 +133,18 @@ public enum BlogHandler implements Route {
         return map;
     }
     private static long getId(Request request){
-        String idParam = request.params("id");
-        if(StringUtils.isEmpty(idParam)){
-            return 0;
-        }else {
-            Long aLong = Long.valueOf(idParam);
-            return aLong;
-        }
+        String id = request.params("id");
+        String idInQueryString = request.queryParams("id");
 
+        if (id == null && idInQueryString == null) {
+            return -1;
+        } else if (id == null) {
+            id = idInQueryString;
+        }
+        try {
+            return Long.parseLong(id);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("bad id:`" + id + "`");
+        }
     }
 }

@@ -1,5 +1,7 @@
 package com.zlf.utils.sparkjava;
 import com.google.gson.Gson;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import static spark.Spark.*;
 
@@ -92,6 +94,9 @@ public class HelloWorld {
             response.header("name", request.params(":name"));
             return "Hello: " + request.params(":name");
         });
+        get("/param", (request, response) -> {
+            return "Hello param: " + request.queryParams("param");
+        });
 
         // matches "GET /say/hello/to/world"
         // request.splat()[0] is 'hello' and request.splat()[1] 'world'
@@ -102,7 +107,7 @@ public class HelloWorld {
         });
 
         get("/req/res", (req, res) -> {
-            String name = req.params("name");
+            String name = req.queryParams("name");
             System.out.println("req.params: name="+name);
             res.redirect("/redirect");
             return res;
@@ -114,4 +119,12 @@ public class HelloWorld {
             return body+" - "+body1;
         });
     }
+}
+
+@Data
+@AllArgsConstructor
+class MyMessage {
+
+    private Integer id;
+    private String message;
 }

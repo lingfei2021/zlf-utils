@@ -1,4 +1,4 @@
-package com.zlf.utils.sparkjava.blog;
+package com.zlf.utils.sparkjava.blog.bean;
 
 import lombok.Builder;
 import lombok.Data;
