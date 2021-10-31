@@ -8,11 +8,12 @@
 		<version>2.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.zlf.utils.java.main</groupId>
-	<artifactId>java-main</artifactId>
+
+	<groupId>com.zlf.utils.java.tools</groupId>
+	<artifactId>java-tools</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>java-main</name>
-	<description>Demo project for Spring Boot</description>
+	<name>java-tools</name>
+
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -27,6 +28,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>RELEASE</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -34,8 +42,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.5.5</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
