@@ -44,7 +44,7 @@ git rm -f a.a 强行移除修改后文件(从暂存区和工作区中删除)
 git rm -r *  递归删除 
 git fetch 相当于是从远程获取最新版本到本地，不会自动merge
 git tag 里程碑管理
-git reset --hard HEAD  将当前版本重置为HEAD（通常用于merge失败回退）
+
 git reset --hard origin/masterorigin/master  撤销本地、暂存区、版本库(用远程服务器的origin/master替换本地、暂存区、版本库)
 
 du -hs 查看文件大小
