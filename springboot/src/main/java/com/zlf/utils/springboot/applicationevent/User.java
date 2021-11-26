@@ -1,5 +1,6 @@
 package com.zlf.utils.springboot.applicationevent;
 
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -8,6 +9,7 @@ import lombok.Data;
  */
 
 @Data
+@Builder
 public class User {
 
     private String name;
