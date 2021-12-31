@@ -15,10 +15,19 @@ import java.util.concurrent.TimeUnit;
 public class RedisHandler {
 
     private final StringRedisTemplate stringRedisTemplate;
+    private final RedisTemplate redisTemplate;
+
+    public RedisTemplate getRedisTemplate(){
+        return redisTemplate;
+    }
 
     public void keys(String pattern){
         Set keys = stringRedisTemplate.keys(pattern);
         System.out.println(keys);
+    }
+
+    public StringRedisTemplate getStringRedisTemplate(){
+        return this.stringRedisTemplate;
     }
 
     public void test() {

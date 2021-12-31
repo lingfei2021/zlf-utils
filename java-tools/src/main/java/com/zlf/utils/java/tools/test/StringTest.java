@@ -10,7 +10,8 @@ public class StringTest {
 
 //        test();
 //        test1();
-        test3();
+//        test3();
+        test4();
     }
     private static void test(){
         String style = "123123abc";
@@ -42,5 +43,10 @@ public class StringTest {
     private static void test3(){
         String seq = StringUtils.leftPad(Long.toString(12), 3, "0");
         System.out.println(seq);
+    }
+    private static void test4(){
+        Integer i = new Integer(10);
+        System.out.println(i);
+        System.out.println(i.toString());
     }
 }

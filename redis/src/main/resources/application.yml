@@ -3,5 +3,8 @@ spring:
   redis:
     host: ec2-3-16-206-94.us-east-2.compute.amazonaws.com
     port: 6379
-    database: 5
+#    测试
+#    database: 5
+#    线上
+    database: 0
     password: InfWavesRedis2021

@@ -37,7 +37,7 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://3.14.29.182:3306/platform-base?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://3.14.29.182:3306/erp-product?useUnicode=true&useSSL=false&characterEncoding=utf8");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
@@ -46,8 +46,8 @@ public class CodeGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("base");
-        pc.setParent("com.infwaves");
+//        pc.setModuleName("tech_material");
+        pc.setParent("com.infwaves.erp.product.module.product_channel");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -115,7 +115,7 @@ public class CodeGenerator {
 //        strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
 //        strategy.setSuperEntityColumns("id");
-        strategy.setInclude(("SUPPORT_INFO,CATEGORY_ITEM,ATTRIBUTE_NAME_ITEM,ATTRIBUTE_VALUE_ITEM,SIZE_ITEM,COLOUR_ITEM,TAG_ITEM,MODEL_INFO,CAMERAMAN_STAFF,BUSINESS_LOG,SELECT_DATA").split(","));
+        strategy.setInclude(("PRODUCT_CHANNEL_RL").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         strategy.setEntityTableFieldAnnotationEnable(true);
