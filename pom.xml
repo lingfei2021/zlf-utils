@@ -17,6 +17,7 @@
         <module>retrofit</module>
         <module>sparkjava</module>
         <module>redis</module>
+        <module>jxls</module>
     </modules>
 
     <properties>

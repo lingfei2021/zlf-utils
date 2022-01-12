@@ -21,3 +21,6 @@ update tablename set column1 = "cc", column2=column2 where id=123;
 
 ---------- 数据库数据有更新的时候UPDATE_TIME的时间会自动更新（长事务中UPDATE_TIME取的是update时间点）
 ALTER TABLE `t_tablename` ADD COLUMN `update_time` timestamp DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '数据更新时间';
+
+------根据当前表的a字段更新b字段；
+update AUDIT_PRODUCT_RECORD a inner join AUDIT_PRODUCT_RECORD b  on a.id=b.id set a.auditor_id = b.updated_by;

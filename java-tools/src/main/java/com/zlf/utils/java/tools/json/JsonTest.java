@@ -8,7 +8,14 @@ import java.util.List;
 public class JsonTest {
 
     public static void main(String[] args) {
-        test();
+//        test();
+        test1();
+
+    }
+    private static void test1(){
+        String j = null;
+        String s = JSON.toJSONString(j);
+        System.out.println(s);
     }
 
     private static void test(){

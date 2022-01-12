@@ -66,3 +66,44 @@ POST idx_product/_update_by_query
     "lang": "painless"
   }
 }
+
+#利用脚本更新数据
+# Too many dynamic script compilations within, max: [75/5m];
+# ElasticSearch5分钟内执行脚本编译超过75个，编译太多而拒绝编译。编译是非常耗时的，这是ES的自我保护功能。
+POST idx_product/_update_by_query
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"terms": {
+          "spu": ["OA21100911"
+          ]
+        }}
+      ]
+    }
+  },
+  "script": {
+    "source": " for(e in ctx._source.channel_skus){    if(e.sku=='OA21100911BKL'){        e.inventory_quantity= 0   } }", 
+    "lang": "painless"
+  }
+}
+# 将参数写入params，源码source就不需要重复编译。
+GET idx_product/_search
+{
+    "query": {
+        "function_score": {
+            "query": {
+                "match": { "message": "elasticsearch" }
+            },
+            "script_score" : {
+                "script" : {
+                    "params": {
+                        "a": 5,
+                        "b": 1.2
+                    },
+                    "source": "params.a / Math.pow(params.b, doc['likes'].value)"
+                }
+            }
+        }
+    }
+}
