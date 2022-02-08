@@ -11,7 +11,9 @@ public class StringTest {
 //        test();
 //        test1();
 //        test3();
-        test4();
+//        test4();
+        test5();
+
     }
     private static void test(){
         String style = "123123abc";
@@ -48,5 +50,11 @@ public class StringTest {
         Integer i = new Integer(10);
         System.out.println(i);
         System.out.println(i.toString());
+    }
+
+    private static void test5(){
+        int i=113;
+        String s = "BP"+i+System.currentTimeMillis()+".jpg";
+        System.out.println(s);
     }
 }

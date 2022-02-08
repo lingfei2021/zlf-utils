@@ -24,3 +24,6 @@ ALTER TABLE `t_tablename` ADD COLUMN `update_time` timestamp DEFAULT NULL ON UPD
 
 ------根据当前表的a字段更新b字段；
 update AUDIT_PRODUCT_RECORD a inner join AUDIT_PRODUCT_RECORD b  on a.id=b.id set a.auditor_id = b.updated_by;
+
+select * from PRODUCT_ATTRIBUTE_RL where attr_values like '%""%';
+UPDATE PRODUCT_ATTRIBUTE_RL SET attr_values = REPLACE(attr_values,'""','') where attr_values like '%""%';

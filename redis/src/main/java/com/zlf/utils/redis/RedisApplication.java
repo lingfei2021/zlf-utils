@@ -17,19 +17,19 @@ public class RedisApplication {
 //		handler.test();
 //		handler.keys("erp-product*");
 //		handler.keys("*standard_category_tree*");
-//		handler.keys("*product_attribute*");
-		handler.keys("*:standard_category_name::75");
+		handler.keys("*product_attribute*");
+//		handler.keys("*:standard_category_name::75");
 //
 //		String value = handler.getStringRedisTemplate().opsForValue().get("1:erp-product-analysis:standard_category_tree::SimpleKey []");
 //		System.out.println(value);
 //
-		String value = handler.getStringRedisTemplate().opsForValue().get("null:erp-product-analysis:standard_category_name::75");
-		System.out.println(value);
-		handler.getStringRedisTemplate().delete("null:erp-product-analysis:standard_category_name::75");
+//		String value = handler.getStringRedisTemplate().opsForValue().get("null:erp-product-analysis:standard_category_name::75");
+//		System.out.println(value);
+//		handler.getStringRedisTemplate().delete("null:erp-product-analysis:standard_category_name::75");
 //		handler.getStringRedisTemplate().delete("1:erp-product-analysis:standard_category_tree::SimpleKey []");
 //		handler.getStringRedisTemplate().delete("Alibaba:1688:super_buy_token");
 //		handler.getStringRedisTemplate().delete("erp-productp_status_count:");
-//		handler.getStringRedisTemplate().delete("1:dict_details::product_attribute");
+		handler.getStringRedisTemplate().delete("1:dict_details::product_attribute");
 //
 //		String v = String.valueOf(handler.getStringRedisTemplate().opsForValue().get("Alibaba:1688:super_buy_token"));
 //		System.out.println(v);
