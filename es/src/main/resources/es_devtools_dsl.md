@@ -33,7 +33,39 @@ GET idx_product/_search
     }
   }
 }
-
+#嵌套查询
+GET idx_product/_search
+{
+  "size": 1000,
+  "_source": [
+    "channel_skus.sku","channel_skus.channel_id"
+  ],
+  "query": {
+    "nested": {
+      "path": "channel_skus",
+      "query": {
+        "bool": {
+          "must": [
+            {
+              "term": {
+                "channel_skus.status": {
+                  "value": "4"
+                }
+              }
+            },
+            {
+              "term": {
+                "channel_skus.channel_id": {
+                  "value": "4"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
 #查询删除
 POST idx_product/_delete_by_query
 { 
@@ -106,4 +138,27 @@ GET idx_product/_search
             }
         }
     }
+}
+
+#模糊匹配和精准匹配
+GET idx_product/_search
+{
+  
+  "track_total_hits": true,
+  "_source": "detail_eng_title", 
+  "query": {
+    "regexp":{
+      "detail_eng_title":".*Neck Short Puff.*"
+    }
+  }
+}
+
+GET idx_product/_search
+{
+  "_source": "detail_eng_title", 
+  "query": {
+    "term": {
+      "detail_eng_title":"Square Neck Short Puff Sleeve Floral Dress"
+    }
+  }
 }

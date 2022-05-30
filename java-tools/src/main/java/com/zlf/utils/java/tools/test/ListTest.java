@@ -1,5 +1,7 @@
 package com.zlf.utils.java.tools.test;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +11,7 @@ public class ListTest {
     public static void main(String[] args) {
         System.out.println(123);
 
-        test();
+        test1();
     }
 
     private static void test(){
@@ -28,5 +30,10 @@ public class ListTest {
 //        System.out.println(list.get(0));
 
 //        list.stream().forEach( l -> System.out.println(l));
+    }
+    private static void test1(){
+        List<Object> list = new ArrayList<>();
+        System.out.println(list);
+        System.out.println(JSON.toJSONString(list));
     }
 }

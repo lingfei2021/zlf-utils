@@ -9,8 +9,8 @@ public class JsonTest {
 
     public static void main(String[] args) {
 //        test();
-        test1();
-
+//        test1();
+        test2();
     }
     private static void test1(){
         String j = null;
@@ -1159,5 +1159,12 @@ public class JsonTest {
                 "\n" +
                 "    ";
 
+    }
+
+    private static void test2(){
+        List<String> imageInfos = JSON.parseArray("[]", String.class);
+        if(!CollectionUtils.isEmpty(imageInfos)){
+            System.out.println(imageInfos);
+        }
     }
 }

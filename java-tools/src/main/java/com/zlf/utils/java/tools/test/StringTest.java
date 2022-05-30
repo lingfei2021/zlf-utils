@@ -3,6 +3,10 @@ package com.zlf.utils.java.tools.test;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class StringTest {
 
     public static void main(String[] args) {
@@ -12,8 +16,24 @@ public class StringTest {
 //        test1();
 //        test3();
 //        test4();
-        test5();
+//        test5();
+//            test6();
+        test7();
+    }
 
+    private static void test7() {
+        String a = "123rfer";
+        System.out.println(a.replace("123","aaa"));
+    }
+
+
+    private static void test6(){
+        String s1 = "devOA220223003BES";
+        String s2 = "devOA220223003BEAS";
+        String s = "devOA220223003BE";
+        System.out.println(s1.contains(s));
+        List<String> collect = Arrays.asList(s1, s2).stream().filter(ss -> ss.contains(s)).collect(Collectors.toList());
+        System.out.println(collect.size()-1);
     }
     private static void test(){
         String style = "123123abc";

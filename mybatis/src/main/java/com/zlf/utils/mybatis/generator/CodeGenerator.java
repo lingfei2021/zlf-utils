@@ -37,17 +37,20 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://aws003.infwaves.com:3306/erp-purchase?useUnicode=true&useSSL=false&characterEncoding=utf8&allowPublicKeyRetrieval=true");
+        dsc.setUrl("jdbc:mysql://aws003.infwaves.com:3306/erp-product?useUnicode=true&useSSL=false&characterEncoding=utf8&allowPublicKeyRetrieval=true");
+//        dsc.setUrl("jdbc:mysql://infwaves.c0rck9lj4qyp.us-east-2.rds.amazonaws.com:3306/data_analysis?useUnicode=true&useSSL=false&characterEncoding=utf8&allowPublicKeyRetrieval=true");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
+//        dsc.setUsername("admin");
         dsc.setPassword("JYFscvVevsANJYmrz9Ud");
+//        dsc.setPassword("JYFscvVevsANJYmrz9Ud");
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
 //        pc.setModuleName("tech_material");
-        pc.setParent("com.infwaves.erp.purchase.service.module.stock_purchase_plan");
+        pc.setParent("com.infwaves.erp.product.module.goods_pre_sale");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -115,7 +118,7 @@ public class CodeGenerator {
 //        strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
 //        strategy.setSuperEntityColumns("id");
-        strategy.setInclude(("STOCK_PURCHASE_PLAN_SKC,STOCK_PURCHASE_PLAN_SKU,STOCK_PURCHASE_PLAN_LOG").split(","));
+        strategy.setInclude(("GOODS_PRE_SALE,GOODS_PRE_SALE_OP_LOG").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         strategy.setEntityTableFieldAnnotationEnable(true);

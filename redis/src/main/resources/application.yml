@@ -4,7 +4,21 @@ spring:
     host: ec2-3-16-206-94.us-east-2.compute.amazonaws.com
     port: 6379
 #    测试
-#    database: 5
+    database: 5
 #    线上
-    database: 0
+#    database: 0
     password: InfWavesRedis2021
+
+
+#
+#spring:
+#  redis:
+#    password:
+#    cluster:
+#      nodes: 127.0.0.1:6379
+#      max-redirects: 3
+#    lettuce:
+#      pool:
+#        max-idle: 16
+#        max-active: 32
+#        min-idle: 8

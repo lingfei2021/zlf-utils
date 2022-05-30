@@ -2,6 +2,7 @@ package com.zlf.utils.redis;
 
 import com.zlf.utils.redis.context.ApplicationContextUtil;
 import com.zlf.utils.redis.handler.RedisHandler;
+import com.zlf.utils.redis.redisson.RedissonTest;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,22 +15,27 @@ public class RedisApplication {
 		SpringApplication.run(RedisApplication.class, args);
 
 		RedisHandler handler = (RedisHandler)ApplicationContextUtil.getBean("redisHandler");
-//		handler.test();
-//		handler.keys("erp-product*");
-//		handler.keys("*standard_category_tree*");
-		handler.keys("*product_attribute*");
-//		handler.keys("*:standard_category_name::75");
-//
+		testKeys(handler);
+		testGet(handler);
+		testDelete(handler);
+
+		RedissonTest redissonTest = (RedissonTest)ApplicationContextUtil.getBean("redissonTest");
+		redissonTest(redissonTest);
+		System.out.println("---------end-------------");
+	}
+
+	private static void redissonTest(RedissonTest redissonTest) {
+//		redissonTest.lock();
+	}
+
+	private static void testGet(RedisHandler handler) {
+
 //		String value = handler.getStringRedisTemplate().opsForValue().get("1:erp-product-analysis:standard_category_tree::SimpleKey []");
 //		System.out.println(value);
 //
 //		String value = handler.getStringRedisTemplate().opsForValue().get("null:erp-product-analysis:standard_category_name::75");
 //		System.out.println(value);
-//		handler.getStringRedisTemplate().delete("null:erp-product-analysis:standard_category_name::75");
-//		handler.getStringRedisTemplate().delete("1:erp-product-analysis:standard_category_tree::SimpleKey []");
-//		handler.getStringRedisTemplate().delete("Alibaba:1688:super_buy_token");
-//		handler.getStringRedisTemplate().delete("erp-productp_status_count:");
-		handler.getStringRedisTemplate().delete("1:dict_details::product_attribute");
+
 //
 //		String v = String.valueOf(handler.getStringRedisTemplate().opsForValue().get("Alibaba:1688:super_buy_token"));
 //		System.out.println(v);
@@ -43,15 +49,6 @@ public class RedisApplication {
 //
 //		String v2 = String.valueOf(handler.getRedisTemplate().opsForValue().get("Alibaba:1688:super_buy_token"));
 //		System.out.println(v2);
-//
-//		String v12 = String.valueOf(handler.getRedisTemplate().opsForValue().get("Alibaba:1688:token"));
-//		System.out.println(v12);
-////
-
-//		handler.getStringRedisTemplate().delete("erp-product:p_status_count");
-
-//		handler.getStringRedisTemplate().opsForHash().put("erp-product:p_status_count", "000", "0");
-//		handler.getStringRedisTemplate().opsForHash().increment("erp-product:p_status_count", "000", 1);
 
 //		Map entries = handler.getStringRedisTemplate().opsForHash().entries("erp-product:p_status_count");
 //		entries.keySet().stream().forEach(key ->{
@@ -59,5 +56,44 @@ public class RedisApplication {
 //		});
 
 	}
+	private static void testDelete(RedisHandler handler) {
+//		handler.delete("*role_details*");
+//		handler.getStringRedisTemplate().delete("null:erp-product-analysis:standard_category_name::75");
+//		handler.getStringRedisTemplate().delete("1:erp-product-analysis:standard_category_tree::SimpleKey []");
+//		handler.getStringRedisTemplate().delete("Alibaba:1688:super_buy_token");
+//		handler.getStringRedisTemplate().delete("erp-productp_status_count:");
+//		handler.getStringRedisTemplate().delete("1:dict_details::product_attribute");
+//		handler.getStringRedisTemplate().delete("1:user_details::yangyi");
+
+
+//		handler.getStringRedisTemplate().delete("erp-product:p_status_count");
+//		handler.getStringRedisTemplate().delete("1:dict_details::product_attribute");
+
+		handler.delete("*user_details*");
+
+	}
+	private static void testSet(RedisHandler handler) {
+
+//		handler.getRedisTemplate().opsForValue().set("erp-product:spu_seq:OA220223", 34);
+//		Object obj = handler.getRedisTemplate().opsForValue().get("erp-product:spu_seq:OA220223");
+//		System.out.println(String.valueOf(obj));
+////
+
+//		handler.getStringRedisTemplate().opsForHash().put("erp-product:p_status_count", "000", "0");
+//		handler.getStringRedisTemplate().opsForHash().increment("erp-product:p_status_count", "000", 1);
+
+	}
+	private static void testKeys(RedisHandler handler) {
+		//		handler.test();
+//		handler.keys("erp-product*");
+//		handler.keys("*user*");
+//		handler.keys("*_details*");
+//		handler.keys("*standard_category_tree*");
+//		handler.keys("*product_attribute*");
+//		handler.keys("*:standard_category_name::75");
+
+//		handler.keys("*role*");
+	}
+
 
 }

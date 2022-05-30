@@ -41,4 +41,11 @@ public class RedisHandler {
 
         System.out.println(increment);
     }
+
+    public void delete(String pattern){
+        Set<String> keys = stringRedisTemplate.keys(pattern);
+        keys.stream().forEach(key -> {
+            stringRedisTemplate.delete(key);
+        });
+    }
 }
